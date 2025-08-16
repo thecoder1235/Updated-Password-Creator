@@ -18,18 +18,24 @@ TAVSİYE_EDİLMEYEN = "1234567890qwertyuıopğüasdfghjklşizxcvbnmöç"
 İMKANSIZ = ZOR + "π∞Σ√∛∜∫∬∭∮∯∰∱∲∳∀∁∂∃∄∅∆∇∈∉∊∋∌∍∎∏∐∑∓≅≆≇≈≉≊≋≌≍≎≏≐≑≒≓≔≕≖≗≘≙≚≛≜≝≞≟≠≡≢≣≤≥≦≧≨≩≪≫≬≭≮≯≰≱≲≳≴≵≶≷≸≹≺≻≼≽≾≿⊀⊁⊂⊃⊄⊅⊆⊇⊈⊉⊊⊋⊌⊍⊎⊏⊐⊑⊒⊓⊔⊕⊖⊗⊘⊙⊚⊛⊜⊝⊞⊟⊠⊡⊢⊣⊤⊥⊦⊧⊨⊩⊪⊫⊬⊭⊮⊯⊰⊱⊲⊳⊴⊵⊶⊷⊸⊹⊺⊻⊼⊽⊾⊿⋀⋁⋂⋃⋄⋅⋆⋇⋈⋉⋊⋋⋌⋍⋎⋏⋐⋑⋒⋓⋔⋕⋖⋗⋘⋙⋚⋛⋜⋝⋞⋟⋠⋡⋢⋣⋤⋥⋦⋧⋨⋩⋪⋫⋬⋭⋮⋯⋰⋱⁺⁻⁼⁽⁾ⁿ₊₋₌₍₎♪♫♩♬♭♮♯¢$€£¥₮৲৳௹฿៛₠₡₢₣₤₥₦₧s₨₩₪₫₭₯₰₱₲₳₴₵￥﷼¤ƒ₺♙♖♘♗♔♕♟♜♞♝♚♛♡♥♢♦♤♠♧♣¹²³⁴⁵⁶⁷⁸⁹⁰Æ"
 
 def guvenli_sifre_olustur(zorluk_seti, uzunluk):
-    return ''.join(random.choice(zorluk_seti) for _ in range(uzunluk))
+    sifre = ""
+    
+    for _ in range(uzunluk):
+        karakter_index = random.randint(0, len(zorluk_seti) - 1)
+        yeni_karakter = zorluk_seti[karakter_index]
+        
+        sifre = sifre + yeni_karakter
 
 def ana_program():
     time_print("Welcome to the Password Generator Program!\n")
     
     while True:
         try:
-            time_print("How many digits should the password have? (8-64): ")
+            time_print("How many digits should the password have? (8-256): ")
             uzunluk = int(input())
             
-            if uzunluk < 8 or uzunluk > 64:
-                time_print("Please enter a number between 8 and 64!\n")
+            if uzunluk < 8 or uzunluk > 256:
+                time_print("Please enter a number between 8 and 256!\n")
                 continue
                 
             time_print("Choose difficulty level:\n")
